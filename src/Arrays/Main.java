@@ -7,10 +7,11 @@ package Arrays;
  **/
 public class Main {
     public static void main(String[] args) {
-        Array arr = new Array(20);
-        for (int i = 0; i < 10; i++) {
+        Array<Integer> arr = new Array<>(10);
+        for (int i = 0; i < 15; i++) {
             arr.addLast(i);
         }
         System.out.println(arr.toString());
+
     }
 }

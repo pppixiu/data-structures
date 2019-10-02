@@ -5,9 +5,9 @@ package Arrays;
  * @Author sensu
  * @Date 2019/10/2 17:47
  **/
-public class Array {
+public class Array<E> {
 
-    private int[] data;
+    private E[] data;
     private int size;
 
     /**
@@ -16,7 +16,7 @@ public class Array {
      * @param capacity
      */
     public Array(int capacity) {
-        data = new int[capacity];
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
@@ -59,7 +59,7 @@ public class Array {
      *
      * @param e
      */
-    public void addLast(int e) {
+    public void addLast(E e) {
         add(size, e);
     }
 
@@ -68,7 +68,7 @@ public class Array {
      *
      * @param e
      */
-    public void addFirst(int e) {
+    public void addFirst(E e) {
         add(0, e);
     }
 
@@ -78,12 +78,13 @@ public class Array {
      * @param index
      * @param e
      */
-    public void add(int index, int e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("Add failed. Array is full");
-        }
+    public void add(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("AddLast failed. Require inde >= 0 and index <= size");
+        }
+        if (size == data.length) {
+            //java arraylist中是1.5倍
+            resize(2 * data.length);
         }
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
@@ -98,7 +99,7 @@ public class Array {
      * @param index
      * @return
      */
-    int get(int index) {
+    E get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         }
@@ -111,7 +112,7 @@ public class Array {
      * @param index
      * @param e
      */
-    void set(int index, int e) {
+    void set(int index, E e) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         }
@@ -124,9 +125,9 @@ public class Array {
      * @param e
      * @return
      */
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return true;
             }
         }
@@ -139,7 +140,7 @@ public class Array {
      * @param e
      * @return
      */
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
             if (data[i] == e) {
                 return i;
@@ -154,15 +155,17 @@ public class Array {
      * @param index
      * @return
      */
-    public int remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Remove failed. Index is illegal.");
         }
-        int ret = data[index];
+        E ret = data[index];
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
         size--;
+        //非必须（loitering objects）  考虑到垃圾回收问题
+        data[size] = null;
         return ret;
     }
 
@@ -171,7 +174,7 @@ public class Array {
      *
      * @return
      */
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -180,7 +183,7 @@ public class Array {
      *
      * @return
      */
-    public int removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -189,11 +192,24 @@ public class Array {
      *
      * @param e
      */
-    public void removeEmelent(int e) {
+    public void removeEmelent(E e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
         }
+    }
+
+    /**
+     * 将数组扩容并赋值
+     *
+     * @param newCapacity
+     */
+    private void resize(int newCapacity) {
+        E[] newDate = (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newDate[i] = data[i];
+        }
+        data = newDate;
     }
 
     @Override
