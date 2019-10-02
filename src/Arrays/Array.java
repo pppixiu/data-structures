@@ -166,6 +166,11 @@ public class Array<E> {
         size--;
         //非必须（loitering objects）  考虑到垃圾回收问题
         data[size] = null;
+
+        //缩小数组容量
+        if (size == data.length / 2) {
+            resize(data.length / 2);
+        }
         return ret;
     }
 
