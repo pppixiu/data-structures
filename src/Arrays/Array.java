@@ -167,8 +167,8 @@ public class Array<E> {
         //非必须（loitering objects）  考虑到垃圾回收问题
         data[size] = null;
 
-        //缩小数组容量
-        if (size == data.length / 2) {
+        //缩小数组容量 data.length/4防止复杂度震荡
+        if (size == data.length / 4 && data.length / 2 != 0) {
             resize(data.length / 2);
         }
         return ret;
