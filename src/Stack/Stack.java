@@ -1,4 +1,4 @@
-package Arrays;
+package Stack;
 
 public interface Stack<E> {
 
@@ -14,7 +14,7 @@ public interface Stack<E> {
      *
      * @return
      */
-    boolean isEmpt();
+    boolean isEmpty();
 
     /**
      * 入栈

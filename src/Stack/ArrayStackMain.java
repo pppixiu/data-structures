@@ -1,4 +1,4 @@
-package Arrays;
+package Stack;
 
 /**
  * @ClassName ArrayStackMain
@@ -7,7 +7,7 @@ package Arrays;
  **/
 public class ArrayStackMain {
     public static void main(String[] args) {
-        Stack<Integer> stack = new ArrayStack<>();
+        Stack<Integer> stack = new ArrayStack<Integer>();
 
         for (int i = 0; i < 5; i++) {
             stack.push(i);

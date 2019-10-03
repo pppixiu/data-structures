@@ -1,4 +1,6 @@
-package Arrays;
+package Stack;
+
+import Arrays.Array;
 
 /**
  * @ClassName ArrayStack
@@ -23,7 +25,7 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     @Override
-    public boolean isEmpt() {
+    public boolean isEmpty() {
         return array.isEmpty();
     }
 
