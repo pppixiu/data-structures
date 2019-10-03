@@ -1,4 +1,4 @@
-package Arrays;
+package Queue;
 
 import java.util.Random;
 
@@ -28,11 +28,11 @@ public class Main {
 
         int opCount = 100000;
 
-        ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
+        ArrayQueue<Integer> arrayQueue = new ArrayQueue<Integer>();
         double time1 = testQueue(arrayQueue, opCount);
         System.out.println("ArrayQueue, time: " + time1 + " s");
 
-        LoopQueue<Integer> loopQueue = new LoopQueue<>();
+        LoopQueue<Integer> loopQueue = new LoopQueue<Integer>();
         double time2 = testQueue(loopQueue, opCount);
         System.out.println("LoopQueue, time: " + time2 + " s");
     }

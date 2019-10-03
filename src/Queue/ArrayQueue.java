@@ -1,4 +1,6 @@
-package Arrays;
+package Queue;
+
+import Arrays.Array;
 
 /**
  * @ClassName ArrayQueue
@@ -61,7 +63,7 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     public static void main(String[] args) {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
+        ArrayQueue<Integer> queue = new ArrayQueue<Integer>();
         for (int i = 0; i < 10; i++) {
             queue.enqueue(i);
             System.out.println(queue);
