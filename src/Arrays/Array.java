@@ -1,5 +1,7 @@
 package Arrays;
 
+import java.awt.dnd.DropTarget;
+
 /**
  * @ClassName Array
  * @Author sensu
@@ -99,11 +101,29 @@ public class Array<E> {
      * @param index
      * @return
      */
-    E get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         }
         return data[index];
+    }
+
+    /**
+     * 得到最后一个元素
+     *
+     * @return
+     */
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    /**
+     * 得到第一个元素
+     *
+     * @return
+     */
+    public E getFirst() {
+        return get(0);
     }
 
     /**
@@ -112,7 +132,7 @@ public class Array<E> {
      * @param index
      * @param e
      */
-    void set(int index, E e) {
+    public void set(int index, E e) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         }
