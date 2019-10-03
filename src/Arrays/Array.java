@@ -180,6 +180,7 @@ public class Array<E> {
             throw new IllegalArgumentException("Remove failed. Index is illegal.");
         }
         E ret = data[index];
+        //将之后的元素前移一位
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
