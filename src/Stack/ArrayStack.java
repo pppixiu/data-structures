@@ -9,10 +9,10 @@ import Arrays.Array;
  **/
 public class ArrayStack<E> implements Stack<E> {
 
-    Array<E> array;
+    private Array<E> array;
 
     public ArrayStack(int capacity) {
-        array = new Array<>(capacity);
+        array = new Array<>();
     }
 
     public ArrayStack() {
@@ -60,5 +60,17 @@ public class ArrayStack<E> implements Stack<E> {
         }
         res.append("] top");
         return res.toString();
+    }
+
+    public static void main(String[] args) {
+        ArrayStack<Integer> stack = new ArrayStack<Integer>();
+
+        for (int i = 0; i < 5; i++) {
+            stack.push(i);
+            System.out.println(stack);
+        }
+
+        stack.pop();
+        System.out.println(stack);
     }
 }
