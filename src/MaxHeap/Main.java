@@ -49,6 +49,7 @@ public class Main {
             testData[i] = random.nextInt(Integer.MAX_VALUE);
         }
 
+        //比较heapify 跟 普通插入的差距
         double time1 = testHeap(testData, false);
         System.out.println("Without heapify: " + time1 + " s");
         double time2 = testHeap(testData, true);
