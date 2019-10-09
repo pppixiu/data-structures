@@ -23,6 +23,19 @@ public class Array<E> {
     }
 
     /**
+     * 传入数组 生成对应的data[]
+     *
+     * @param arr
+     */
+    public Array(E[] arr) {
+        data = (E[]) (new Object[arr.length]);
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
+    /**
      * 无参构造，默认数组容量capacity=10
      */
     public Array() {
@@ -236,6 +249,23 @@ public class Array<E> {
             newDate[i] = data[i];
         }
         data = newDate;
+    }
+
+    /**
+     * 交换2个元素
+     * 为MaxHeap设置
+     *
+     * @param i
+     * @param j
+     */
+    public void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("Index is illegal.");
+        }
+
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
     }
 
     @Override
