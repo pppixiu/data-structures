@@ -1,7 +1,6 @@
 package Queue;
 
 import java.util.Random;
-import java.util.PriorityQueue;
 
 /**
  * @ClassName Main
