@@ -124,7 +124,7 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     /**
-     * 下浮操作
+     * 对节点k进行下浮操作
      *
      * @param k
      */
