@@ -9,6 +9,7 @@ import java.util.Stack;
  * @Author sensu
  * @Date 2019/10/4 21:38
  **/
+@SuppressWarnings("Duplicates")
 public class BST<E extends Comparable<E>> {
 
     private class Node {
